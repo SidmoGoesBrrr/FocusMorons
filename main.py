@@ -12,7 +12,7 @@ def main():
 
 
     return render_template("index.html", text=text)
-
+#yeet
 
 @sock.route('/yo')
 def reverse(ws):
