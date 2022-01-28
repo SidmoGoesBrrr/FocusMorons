@@ -20,4 +20,4 @@ def reverse(ws):
     text=ws.receive()
     ws.send(text[::-1])
 if __name__ == '__main__':
-    app.run('0.0.0.0')
+    app.run()
