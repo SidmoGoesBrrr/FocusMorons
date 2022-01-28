@@ -1,23 +1,21 @@
-from flask import Flask, request, render_template
-from flask_sock import Sock
-app = Flask(__name__)
-sock=Sock(app)
+# Importing the relevant libraries
+import websockets
+import asyncio
 
-@app.route('/', methods=['GET', 'POST'])
-def main():
-    text = ""
-    if request.method == 'POST':
-        if request.form.get('bch') == 'bch':
-            pass
+PORT = 5000
 
+print("Server listening on Port " + str(PORT))
 
-    return render_template("index.html", text=text)
-#yeet
+async def echo(websocket, path):
+    print("A client just connected")
+    try:
+        async for message in websocket:
+            print("Received message from client: " + message)
+            await websocket.send("Pong: " + message)
+    except websockets.exceptions.ConnectionClosed as e:
+        print("A client just disconnected")
 
-@sock.route('/yo')
-def reverse(ws):
-  while True:
-    text=ws.receive()
-    ws.send(text[::-1])
-if __name__ == '__main__':
-    app.run('0.0.0.0')
+start_server = websockets.serve(echo, "localhost", PORT)
+
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
