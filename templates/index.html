@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Banish Child</title>
+    <link rel="stylesheet", type="text/css", href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+
+</head>
+
+<body class="main">
+
+<hr width="parent" color="#0000ff" size="5px">
+<h1>Welcome to The Banish Child Protocol.</h1>
+<hr width="parent" color="#0000ff" size="5px">
+<br>
+<div>
+    <form method="post" action="/" class="pure-form">
+    <button type="submit" name="bch" class="pure-button pure-button-primary" value="bch">Banish Child Here</button>
+    </form>
+</div>
+<br>
+
+<div>
+    {% if text %}
+    <h4>{{text}}</h4>
+    {% endif %}
+</div>
+
+</body>
+</html>
